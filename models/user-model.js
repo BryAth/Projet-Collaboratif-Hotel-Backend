@@ -24,10 +24,13 @@ const userSchema=new Schema({
     pays:{
         type:String,
         require:true,
+        trim:true
+
     },
     telephone:{
         type:Number,
-        require:true
+        require:true,
+        trim:true
     },
     role:{
         type:String,
