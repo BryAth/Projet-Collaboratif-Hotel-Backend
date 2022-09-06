@@ -1,6 +1,7 @@
 
 const chambreRouter = require('express').Router();
 
+const chambreValidator = require('../validateur/chambre-validator.js')
 
 chambreRouter.route('/')
 .get ((req,res) => {

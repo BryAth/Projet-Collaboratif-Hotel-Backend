@@ -1,14 +1,23 @@
+const userController = require("../controlers/user-controller")
+
+
 const userRouter = require('express').Router();
 
 
 userRouter.route('/')
-    .get ((req,res) => {
-    res.send("Veuillez vous connecter !")
+    
+    .get(userController.getAll);
+    
 
-}) 
+userRouter.route('/:id')
+    .get(userController.getByID)
 
-userRouter.route('/login', (req,res) => {
-    res.send("Veuillez vous logger ")
+    .put(userController.update);
+
+
+userRouter.route('/login')
+.get ((req,res) => {
+    res.send("Veuillez vous logger ");
 })
 
 
