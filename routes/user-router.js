@@ -1,18 +1,23 @@
 const userController = require("../controlers/user-controller")
 
+const bodyValidation = require("../middlewares/bolyValidators");
+const userValidateur = require("../validateur/user-validator.js");
 
 const userRouter = require('express').Router();
 
 
 userRouter.route('/')
     
-    .get(userController.getAll);
+    .get(userController.getAll)
+    .post((req,res) => {
+        res.send("salut")
+    })
     
 
 userRouter.route('/:id')
     .get(userController.getByID)
 
-    .put(userController.update);
+    .put( bodyValidation(userValidateur), userController.update);
 
 
 userRouter.route('/login')
