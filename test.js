@@ -1,2 +1,1 @@
-alert("Salut.")
-alert("Marc & Jeremy & Bryan L")
+alert("Salut de marc.")

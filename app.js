@@ -1,6 +1,14 @@
 const express =  require("express");
-const app = express();
 
-app.listen(8080,() => {
+require('express-async-errors')
+
+const app = express();
+const router = require("./routes");
+
+app.use('/',router)
+
+
+
+app.listen(3000,() => {
     console.log('Server up !')
 })
