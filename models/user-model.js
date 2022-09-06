@@ -7,41 +7,42 @@ const userSchema=new Schema({
         type : String,
         required : true,
         unique : true,
-        trim : true},
+        trim : true
+    } ,
     firstname:{
         type:String,
-        require:true,
+        required:true,
         trim:true
     },
     lastname:{
         type:String,
-        require:true,
+        required:true,
         trim:true
     },
     email:{
         type:String,
-        require:true,
+        required:true,
         trim:true
     },
     password:{
         type:String,
-        require:true
+        required:true
     },
     pays:{
         type:String,
-        require:true,
+        required:true,
         trim:true
 
     },
     telephone:{
         type:Number,
-        require:true,
+        required:true,
         trim:true
     },
     role:{
         type:String,
         enum:["User","Admin"],
-        require:true,
+        required:true,
         default:'User'
     }
 },{
