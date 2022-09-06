@@ -14,8 +14,45 @@ const identificationController={
         //  "credential" : "monIdentifiant"; 
         //  "password" : "monPassword"
         // }
+        const credentialFilter={$or:[{email:credential},{pseudo:credential}]}
+
+        const user = await User.findOne(credentialFilter);
+        //vérifie si on a récupérer un utilisateur
+        if (!user) {
+            return res.status(401).json({error:'non autorisée'}) //401 -> Unauthorized -> Pas les bonnes infos de login
+        }
+        const verifierPassword=await argon2.verify(user.password,password);
+
+        if (!verifierPassword) {
+
+            return res.status(401).json({error:'non autorisée'}) //401 -> Unauthorized -> Pas les bonnes infos de login
+            
+        }
+
+        //TODO : générer et renvoyer un token
+
+        //ici  token aussi
     },
-    register:async(req,res)=>{}
+    register:async(req,res)=>{
+
+        const {pseudo,firstname, lastname,email,password,pays,telephone}=req.body;
+
+        const hashPasword=await argon2.hash(password);
+        // un nouvel utilisateur à partir des infos sur req.body
+
+        const insertUser=User({
+            pseudo,
+            firstname,
+            lastname,
+            email,
+            password:hashPasword,
+            pays,
+            telephone
+        });
+        await insertUser.save();
+        
+        //Ici token aussi
+    }
 };
 
 module.exports=identificationController;
