@@ -1,9 +1,10 @@
 class UserDTO{
-    constructor(id,email,firstname,lastname){
+    constructor(id,pseudo,email,firstname,lastname){
         this.id=id;
+        this.pseudo;
         this.email=email;
         this.firstname=firstname,
-        this.lastname
+        this.lastname=lastname
     }
 }
 
