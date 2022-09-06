@@ -3,6 +3,11 @@ const{Schema,model}=require('mongoose');
 //Création d'un schema par défaut
 
 const userSchema=new Schema({
+    pseudo:{
+        type : String,
+        required : true,
+        unique : true,
+        trim : true},
     firstname:{
         type:String,
         require:true,
@@ -11,7 +16,8 @@ const userSchema=new Schema({
     lastname:{
         type:String,
         require:true,
-        trim:true},
+        trim:true
+    },
     email:{
         type:String,
         require:true,
@@ -43,6 +49,6 @@ const userSchema=new Schema({
     timestamps:true
 });
 //model User à partir du userSchema
-const User=model('User,userSchema');
+const User=model('User',userSchema);
 
-module.exports.User=User;
+module.exports=User;
