@@ -8,14 +8,12 @@ const userRouter = require('express').Router();
 
 userRouter.route('/')
     
-    .get(userController.getAll)
-    .post((req,res) => {
-        res.send("salut")
-    })
+    .get(userController.getAll) // GetAll User avec la méthode GET
+    
     
 
 userRouter.route('/:id')
-    .get(userController.getByID)
+    .get(userController.getByID) //GetById
 
     .put( bodyValidation(userValidateur), userController.update);
 

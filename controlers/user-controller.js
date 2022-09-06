@@ -9,8 +9,8 @@ const userController={
     getAll:async(req,res)=>{
         // récupéré les utilisateurs
         const users=await User.find();
-        const userDTO = users.map(userMapper);
-        res.status(200).json(userDTO);
+        
+        res.status(200).json(users);
     },
     getByID:async(req,res)=>{
         
@@ -24,7 +24,7 @@ const userController={
 
         const userDTO=userMapper(user);
 
-        res.status(200).json(userDTO);
+        res.status(200).json(user);
     },
     create : async(req,res) => {
         const userToAdd = User(req.body)

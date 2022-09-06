@@ -28,7 +28,7 @@ const identificationController={
         const verifierPassword=await argon2.verify(user.password,password);
 
         if (!verifierPassword) {
-
+            res.status(200).json(user)
             return res.status(401).json({error:'non autorisée'}) //401 -> Unauthorized -> Pas les bonnes infos de login
             
         }
@@ -54,6 +54,7 @@ const identificationController={
             telephone
         });
         await insertUser.save();
+        res.status(200).json(insertUser)
         
         
     }
