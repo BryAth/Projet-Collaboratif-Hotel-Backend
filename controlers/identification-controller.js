@@ -14,7 +14,11 @@ const identificationController={
         //  "credential" : "monIdentifiant"; 
         //  "password" : "monPassword"
         // }
-        const credentialFilter={$or:[{email:credential},{pseudo:credential}]}
+        const credentialFilter={
+            $or :
+            [{email:credential},
+            {pseudo:credential}
+            ]                   }
 
         const user = await User.findOne(credentialFilter);
         //vérifie si on a récupérer un utilisateur
@@ -35,7 +39,7 @@ const identificationController={
     },
     register:async(req,res)=>{
 
-        const {pseudo,firstname, lastname,email,password,pays,telephone}=req.body;
+        const {pseudo,firstname,lastname,email,password,pays,telephone}=req.body;
 
         const hashPasword=await argon2.hash(password);
         // un nouvel utilisateur à partir des infos sur req.body
@@ -51,7 +55,7 @@ const identificationController={
         });
         await insertUser.save();
         
-        //Ici token aussi
+        
     }
 };
 

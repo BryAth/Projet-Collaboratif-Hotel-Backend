@@ -3,7 +3,7 @@ const User = require("../models/user-model");
 
 //Fonction de mappage 
 
-const userMapper=(user)=>new UserDTO(user.id,user.email,user.firstname,user.lastname);
+const userMapper=(user)=>new UserDTO(user.pseudo,user.email,user.firstname,user.lastname);
 
 const userController={
     getAll:async(req,res)=>{
