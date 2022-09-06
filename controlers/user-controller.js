@@ -21,11 +21,33 @@ const userController={
         if (!user) {
             return res.sendStatus(404) // <------ élément pas trouvée lors de la demande
         }
+
         const userDTO=userMapper(user);
 
         res.status(200).json(userDTO);
     },
-    update:async(req,res)=>{},
-    delete:async(req,res)=>{},
+    update:async(req,res)=>{
+        const id=req.params.id;
+
+        const {firstname,lastname,email,pays,telephone}=req.body
+        //la fonction qui permet de trouver l'élément via son id et de le modifier
+        const userUpdated=await User.findByIdAndUpdate(id,{firstname,lastname,email,telephone},{returnDocument:'after'});
+
+        if (!userUpdated) {
+            return res.sendStatus(404) // <------ élément pas trouvée lors de la demande
+        }
+       // notre userUpdated qui contient password + role 
+       // notre  userDTO qui ne les contient pas
+        const userDTO=userMapper(userUpdated);
+        res.status(200).json(userDTO);
+    },
+    delete:async(req,res)=>{
+        const id = req.params.id;
+        const userToDelete=await User.findByIdAndDelete(id);
+        if (!userToDelete) {
+            return res.sendStatus(404)// <------ élément pas trouvée lors de la demande
+        }
+        res.sendStatus(204)// tout a fonctionnée
+    },
 }
 module.exports=userController;
