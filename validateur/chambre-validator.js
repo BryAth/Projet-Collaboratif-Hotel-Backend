@@ -23,7 +23,10 @@ const chambreValidator = yup.object({
     }),
     chambreStatus:yup.boolean(),
 
-    chambreReservation:yup.array
+    chambreReservation:yup.array().of(ypu.object({
+        dateDebut:yup.string().required().trim(),
+        dateFin:yup.string().trim()
+    }))
 
 
 })

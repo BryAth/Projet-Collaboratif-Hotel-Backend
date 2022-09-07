@@ -1,6 +1,6 @@
 
 const {Schema, model, Types} = require('mongoose');
-
+const Hotel = require('./hotel-model');
 
 
 const chambreSchema = new Schema ({
@@ -22,7 +22,7 @@ const chambreSchema = new Schema ({
     hotel : {
         type : Types.ObjectId,
         required : true,
-        trim : true,
+        ref:Hotel
     },
     type : {
         type : String,
