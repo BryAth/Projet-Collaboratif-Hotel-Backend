@@ -36,7 +36,9 @@ const userController={
 
         const {firstname,lastname,email,pays,telephone}=req.body
         //la fonction qui permet de trouver l'élément via son id et de le modifier
-        const userUpdated=await User.findByIdAndUpdate(id,{firstname,lastname,email,telephone},{returnDocument:'after'});
+        const userUpdated=await User.findByIdAndUpdate(id,{firstname,lastname,email,pays,telephone},
+        
+            {returnDocument:'after'});
 
         if (!userUpdated) {
             return res.sendStatus(404) // <------ élément pas trouvée lors de la demande

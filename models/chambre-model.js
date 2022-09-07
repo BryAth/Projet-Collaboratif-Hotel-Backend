@@ -57,6 +57,7 @@ const chambreSchema = new Schema ({
 
 },{
     collection : 'Chambre',
+    timestamps:true
 }
 );
 

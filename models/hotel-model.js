@@ -45,6 +45,8 @@ const hotelSchema = new Schema ({
     }
 },{
     collection : 'Hotel',
+    timestamps:true
+
 });
 
 const Hotel = model('Hotel',hotelSchema);

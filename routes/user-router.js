@@ -15,13 +15,15 @@ userRouter.route('/')
 userRouter.route('/:id')
     .get(userController.getByID) //GetById
 
-    .put( bodyValidation(userValidateur), userController.update);
+    .put( bodyValidation(userValidateur), userController.update)
+
+    .delete(userController.delete)
 
 
-userRouter.route('/login')
-.get ((req,res) => {
-    res.send("Veuillez vous logger ");
-})
+// userRouter.route('/login')
+// .get ((req,res) => {
+//     res.send("Veuillez vous logger ");
+// })
 
 
 

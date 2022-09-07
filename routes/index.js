@@ -11,8 +11,8 @@ const router = require('express').Router();
 
 
 router.use('/user',userRouter)
-router.use('/hotel',hotelRouter)
-router.use('/chambre',chambreRouter)
+router.use('/hotels',hotelRouter) //Attention avec Axios 
+router.use('/chambres',chambreRouter) //Attention avec Axios
 router.use('/admin' , adminRouter)
 router.use('/e',authRouter)
 
