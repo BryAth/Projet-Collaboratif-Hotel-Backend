@@ -39,7 +39,7 @@ const identificationController={
     },
     register:async(req,res)=>{
 
-        const {pseudo,firstname, lastname,email,password,contry,phone}=req.body;
+        const {pseudo,firstname, lastname,email,password,country,phone}=req.body;
 
         const hashPasword=await argon2.hash(password);
         // un nouvel utilisateur à partir des infos sur req.body
@@ -50,7 +50,7 @@ const identificationController={
             lastname,
             email,
             password:hashPasword,
-            contry,
+            country,
             phone
         });
         await insertUser.save();
