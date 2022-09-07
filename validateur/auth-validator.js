@@ -10,6 +10,8 @@ const registerValid=yup.object({
     email:yup.string().trim().required().max(255),
     contry:yup.string().trim().required().max(50),
     phone:yup.string().trim().required().max(15),
+    password : yup.string().required().min(8).max(64).matches(pwdRegex)
+
 });
 const logValidator=yup.object({
     credential : yup.string().trim().required().max(255),
