@@ -1,31 +1,31 @@
 
 const {Schema, model, Types} = require('mongoose');
-const { object, string } = require('yup');
+const Hotel = require('./hotel-model');
 
 
 const chambreSchema = new Schema ({
     nom : {
-        type : string,
+        type : String,
         required : true,
         trim:true,
     },
     descriptionCourte:{
-        type : string,
+        type : String,
         required : true,
         trim : true
     },
     descriptionLongue : {
-        type : string,
+        type : String,
         required : true,
         trim : true
     },
     hotel : {
         type : Types.ObjectId,
         required : true,
-        trim : true,
+        ref:Hotel
     },
     type : {
-        type : string,
+        type : String,
         required : true,
         trim : true
     },

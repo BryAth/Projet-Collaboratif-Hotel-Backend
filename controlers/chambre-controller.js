@@ -68,9 +68,8 @@ const chambreController = {
     reservation:async(req,res)=>{
         const id = req.params.id;
         const{dateDebut,dateFin}=req.body;
-        const chambreReservationUpdated= await Commande.findByIdAndUpdate(id,{
-            dateDebut,
-            dateFin : dateFin? dateFin:dateDebut
+        const chambreReservationUpdated= await Chambre.findByIdAndUpdate(id,{
+            chambreReservation:chambreReservation.push({dateDebut,dateFin})
         },{returnDocument:'after'});
         if(!chambreReservationUpdated){
             return res.sendStatus(404);
