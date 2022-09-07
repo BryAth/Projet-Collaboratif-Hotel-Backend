@@ -1,6 +1,6 @@
 const User=require('../models/user-model');
 
-//ici token si besoin
+const tokenUtils=require('../token/token')
 
 const argon2=require('argon2');
 
@@ -30,8 +30,8 @@ const identificationController={
         }
 
         //TODO : générer et renvoyer un token
-
-        //ici  token aussi
+        const token=await tokenUtils.generate(user);
+        return res.json({token});
     },
     register:async(req,res)=>{
 
@@ -51,7 +51,9 @@ const identificationController={
         });
         await insertUser.save();
         
-        //Ici token aussi
+        const token=await tokenUtils.generate(insertUser);
+        res.status(200).json({token});
+
     }
 };
 
