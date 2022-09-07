@@ -29,22 +29,26 @@ const hotelSchema = new Schema ({
     },
     nombreChambres:{
         type : Number , 
-        required : true,
+        required : true
 
     },
     piscine : {
-        type : Boolean
+        type : Boolean,
+        default:false,
     },
     voiturier:{
-        type : Boolean
+        type : Boolean,
+        default:false,
 
     },
     roomService : {
-        type : Boolean
+        type : Boolean,
+        default:false,
 
     }
 },{
     collection : 'Hotel',
+    timestamps : true
 });
 
 const Hotel = model('Hotel',hotelSchema);

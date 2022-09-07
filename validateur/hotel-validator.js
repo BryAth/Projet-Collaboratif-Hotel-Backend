@@ -4,6 +4,7 @@ const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 
 
+
 const hotelValidator = yup.object({
     nom : yup.string().trim().required().min(2).max(50),
     etoiles : yup.number().required().positive(),

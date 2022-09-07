@@ -43,6 +43,6 @@ const userSchema=new Schema({
     timestamps:true
 });
 //model User à partir du userSchema
-const User=model('User,userSchema');
+const User=model('User',userSchema);
 
-module.exports.User=User;
+module.exports=User;

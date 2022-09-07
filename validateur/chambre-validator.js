@@ -20,7 +20,10 @@ const chambreValidator = yup.object({
         dejeuner: yup.boolean(),
         disponible: yup.boolean(),
 
-    })
+    }),
+    chambreStatus:yup.boolean(),
+
+    chambreReservation:yup.array
 
 
 })
