@@ -29,25 +29,25 @@ const userSchema=new Schema({
         type:String,
         required:true
     },
-    pays:{
+    contry:{
         type:String,
         required:true,
         trim:true
 
     },
-    telephone:{
+    phone:{
         type:Number,
         required:true,
         trim:true
     },
     role:{
         type:String,
-        enum:["User","Admin"],
+        enum:['User','Admin'],
         required:true,
         default:'User'
     }
 },{
-    collection:"User",
+    collection:'User',
     timestamps:true
 });
 //model User à partir du userSchema
