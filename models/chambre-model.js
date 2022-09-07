@@ -1,28 +1,31 @@
-const {Schema, model} = require('mongoose');
+
+const {Schema, model, Types} = require('mongoose');
+
+
 
 const chambreSchema = new Schema ({
     nom : {
-        type : string,
+        type : String,
         required : true,
         trim:true,
     },
     descriptionCourte:{
-        type : string,
+        type : String,
         required : true,
         trim : true
     },
     descriptionLongue : {
-        type : string,
+        type : String,
         required : true,
         trim : true
     },
     hotel : {
-        type : string,
+        type : Types.ObjectId,
         required : true,
         trim : true,
     },
     type : {
-        type : string,
+        type : String,
         required : true,
         trim : true
     },
@@ -43,21 +46,36 @@ const chambreSchema = new Schema ({
         required : true ,
     },
     options : {
-        balcon: {type : Boolean},
-        airConditione : {type : Boolean},
-        wifi : {type : Boolean},
-        minibar : {type : Boolean},
-        animaux : {type : Boolean},
-        tv : {type : Boolean},
-        dejeuner : {type : Boolean},
-        disponible : {type : Boolean}
+        balcon: {type : Boolean, default:false},
+        airConditione : {type : Boolean, default:false},
+        wifi : {type : Boolean, default:false},
+        minibar : {type : Boolean, default:false},
+        animaux : {type : Boolean, default:false},
+        tv : {type : Boolean, default:false},
+        dejeuner : {type : Boolean, default:false},
+        disponible : {type : Boolean, default:false}
 
-    }
+    },
+    chambrestatus:{
+        type:String,
+        required:true
+    },
+    chambreReservation:[{
+        dateDebut :{
+            type :String,
+            required: true,
+            trim:true
+        } ,
+        dateFin :{
+            type :String,
+            trim : true
+        } 
+    }]
 
 
 },{
     collection : 'Chambre',
-    timestamps:true
+    timestamps : true
 }
 );
 
