@@ -9,16 +9,17 @@ const userRouter = require('express').Router();
 
 userRouter.route('/')
     
-    .get(  idValidator(), userController.getAll) // GetAll User avec la méthode GET
+    .get(userController.getAll) // GetAll User avec la méthode GET
     
     
 
 userRouter.route('/:id')
-    .get( idValidator(),userController.getByID) //GetById
+    .get(idValidator(),userController.getByID) //GetById
 
-    .put( bodyValidation(userValidateur), userController.update)
+    .put(bodyValidation(userValidateur), userController.update)
 
-    .delete( idValidator(),userController.delete)
+    .delete(idValidator(),userController.delete)
+    
 
 
 

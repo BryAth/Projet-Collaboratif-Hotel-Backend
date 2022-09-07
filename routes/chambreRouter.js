@@ -1,6 +1,7 @@
 
 const chambreRouter = require('express').Router();
 
+const authDroits = require ('../middlewares/identification-token-middlewares')
 
 const chambreController = require('../controlers/chambre-controller.js');
 
@@ -15,13 +16,25 @@ chambreRouter.route('/')
 
 chambreRouter.route('/:id')
 
-.get(chambreController.getById)
+    .get(chambreController.getById)
 
-.put(chambreController.reservation)
+   
+
+    .put(authDroits("Admin"),chambreController.update)
+
+
+    .delete(chambreController.delete)
+
+
+chambreRouter.route('/active/:id')
+
 
 .put(chambreController.desactive)
 
-.delete(chambreController.delete)
+chambreRouter.route('/reservation')
+
+.put(chambreController.reservation)
+
 
 
     

@@ -34,7 +34,7 @@ const userController={
     update:async(req,res)=>{
         const id=req.params.id;
 
-        const {firstname,lastname,email,contry,phone}=req.body
+        const {firstname,lastname,email,country,phone}=req.body
         //la fonction qui permet de trouver l'élément via son id et de le modifier
         const userUpdated=await User.findByIdAndUpdate(id,{firstname,lastname,email,phone,country},{returnDocument:'after'});
 

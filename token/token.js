@@ -8,7 +8,7 @@ const tokenUtils={
                 const payload={id,pseudo,role}
                 
                 const options={
-                    algorithm:'HS256'?
+                    algorithm:'HS256',
                     expiresIn:'7d',
                     audience:JWT_AUDIENCE,
                     issuer:JWT_ISSUER

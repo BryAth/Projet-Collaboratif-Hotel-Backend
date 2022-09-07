@@ -29,7 +29,7 @@ const userSchema=new Schema({
         type:String,
         required:true
     },
-    contry:{
+    country:{
         type:String,
         required:true,
         trim:true
