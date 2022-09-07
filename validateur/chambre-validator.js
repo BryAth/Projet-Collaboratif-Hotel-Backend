@@ -1,10 +1,12 @@
 const yup = require('yup');
 
+const idRegex = /^[a-f\d]{24}$/i;
+
 const chambreValidator = yup.object({
     nom : yup.string().trim().required().min(1).max(50),
     descriptionCourte: yup.string().trim().required().min(10).max(200),
     descriptionLongue : yup.string().trim().required().min(200).max(700),
-    hotel: yup.string().trim().required().min(1).max(50),
+    hotel: yup.string().required().matches(idRegex),
     type: yup.string().trim().required().trim(),
     nombreDePersonnes: yup.number().required().positive(),
     prix:yup.number().required().positive(),
@@ -23,7 +25,7 @@ const chambreValidator = yup.object({
     }),
     chambreStatus:yup.boolean(),
 
-    chambreReservation:yup.array().of(ypu.object({
+    chambreReservation:yup.array().of(yup.object({
         dateDebut:yup.string().required().trim(),
         dateFin:yup.string().trim()
     }))

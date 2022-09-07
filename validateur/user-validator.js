@@ -5,8 +5,8 @@ const userValidateur=yup.object({
     firstname:yup.string().trim().required().min(2).max(110),
     lastname:yup.string().trim().required().min(2).max(100),
     email:yup.string().trim().required().max(255),
-    pays:yup.string().trim().required().max(50),
-    telephone:yup.string().trim().required().max(15),
+    country:yup.string().trim().required().max(50),
+    phone:yup.string().trim().required().max(15),
 });
 
 module.exports=userValidateur;

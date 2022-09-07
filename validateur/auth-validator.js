@@ -8,8 +8,8 @@ const registerValid=yup.object({
     firstname:yup.string().trim().required().min(2).max(110),
     lastname:yup.string().trim().required().min(2).max(100),
     email:yup.string().trim().required().max(255),
-    pays:yup.string().trim().required().max(50),
-    telephone:yup.string().trim().required().max(15),
+    country:yup.string().trim().required().max(50),
+    phone:yup.string().trim().required().max(15),
 });
 const logValidator=yup.object({
     credential : yup.string().trim().required().max(255),

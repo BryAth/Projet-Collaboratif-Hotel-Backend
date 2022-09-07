@@ -31,6 +31,7 @@ const chambreController = {
     },
     update: async(req,res) =>{
         const id = req.params.id;
+        const{nom,descriptionCourte,descriptionLongue,hotel,type,nombreDePersonnes,prix,salleDeBain,nombreDeWc,options}=req.body;
         const chambre = await Chambre.findByIdAndUpdate(id,{
             nom,
             descriptionCourte,

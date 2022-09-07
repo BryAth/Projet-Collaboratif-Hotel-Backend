@@ -1,6 +1,6 @@
 const  User=require('../models/user-model');
 
-//ici token si besoin
+const tokenUtils=require('../token/token')
 
 const argon2=require('argon2');
 
@@ -34,12 +34,12 @@ const identificationController={
         }
 
         //TODO : générer et renvoyer un token
-
-        //ici  token aussi
+        const token=await tokenUtils.generate(user);
+        return res.json({token});
     },
     register:async(req,res)=>{
 
-        const {pseudo,firstname,lastname,email,password,pays,telephone}=req.body;   // Se mettre d'accord avec le front
+        const {pseudo,firstname, lastname,email,password,country,phone}=req.body;
 
         const hashPasword=await argon2.hash(password);
         // un nouvel utilisateur à partir des infos sur req.body
@@ -50,13 +50,16 @@ const identificationController={
             lastname,
             email,
             password:hashPasword,
-            pays,
-            telephone
+            contry,
+            phone
         });
         await insertUser.save();
         res.status(200).json(insertUser)
         
         
+        const token=await tokenUtils.generate(insertUser);
+        res.status(200).json({token});
+
     }
 };
 

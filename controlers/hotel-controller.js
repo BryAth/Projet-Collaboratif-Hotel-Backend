@@ -30,6 +30,7 @@ const hotelController = {
     },
     update: async(req,res) =>{
         const id = req.params.id;
+        const {nom,etoiles,adresse,telephone,email,nombreChambres,piscine,voiturier,roomService} = req.body
         const hotel = await Hotel.findByIdAndUpdate(id,{
         nom,
         etoiles,
