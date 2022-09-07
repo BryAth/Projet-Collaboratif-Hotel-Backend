@@ -1,6 +1,7 @@
 const userController = require("../controlers/user-controller")
 
 const bodyValidation = require("../middlewares/bolyValidators");
+const idValidator = require("../middlewares/idValidator");
 const userValidateur = require("../validateur/user-validator.js");
 
 const userRouter = require('express').Router();
@@ -13,17 +14,14 @@ userRouter.route('/')
     
 
 userRouter.route('/:id')
-    .get(userController.getByID) //GetById
+    .get(idValidator(),userController.getByID) //GetById
 
-    .put( bodyValidation(userValidateur), userController.update)
+    .put(bodyValidation(userValidateur), userController.update)
 
-    .delete(userController.delete)
+    .delete(idValidator(),userController.delete)
+    
 
 
-// userRouter.route('/login')
-// .get ((req,res) => {
-//     res.send("Veuillez vous logger ");
-// })
 
 
 

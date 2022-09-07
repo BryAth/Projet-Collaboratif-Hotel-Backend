@@ -14,7 +14,7 @@ router.use('/user',userRouter)
 router.use('/hotels',hotelRouter) //Attention avec Axios 
 router.use('/chambres',chambreRouter) //Attention avec Axios
 router.use('/admin' , adminRouter)
-router.use('/e',authRouter)
+router.use('/auth',authRouter)
 
 
 

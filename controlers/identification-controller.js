@@ -14,6 +14,7 @@ const identificationController={
         //  "credential" : "monIdentifiant"; 
         //  "password" : "monPassword"
         // }
+        console.log(credential)
         const credentialFilter={
             $or :
             [{email:credential},
@@ -44,6 +45,8 @@ const identificationController={
         const hashPasword=await argon2.hash(password);
         // un nouvel utilisateur à partir des infos sur req.body
 
+
+
         const insertUser=User({
             pseudo,
             firstname,
@@ -54,8 +57,6 @@ const identificationController={
             phone
         });
         await insertUser.save();
-        res.status(200).json(insertUser)
-        
         
         const token=await tokenUtils.generate(insertUser);
         res.status(200).json({token});

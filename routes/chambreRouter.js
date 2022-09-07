@@ -1,16 +1,42 @@
 
 const chambreRouter = require('express').Router();
 
-const chambreValidator = require('../validateur/chambre-validator.js')
+const authDroits = require ('../middlewares/identification-token-middlewares')
+
+const chambreController = require('../controlers/chambre-controller.js');
+
 
 chambreRouter.route('/')
-.get ((req,res) => {
-    res.status(200).send("Bienvenue sur la page des chambre d'hotels !")
-})
+
+.get (chambreController.getAll)
+
+
+
+.post(chambreController.create)
+
+chambreRouter.route('/:id')
+
+    .get(chambreController.getById)
+
+   
+
+    .put(authDroits("Admin"),chambreController.update)
+
+
+    .delete(chambreController.delete)
+
+
+chambreRouter.route('/active/:id')
+
+
+.put(chambreController.desactive)
 
 chambreRouter.route('/reservation')
-    .get((req,res) => {
-        res.status(200).send("Bienvenue sur la page de réservation !")
-    })
+
+.put(chambreController.reservation)
+
+
+
+    
 
 module.exports = chambreRouter;

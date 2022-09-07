@@ -3,7 +3,7 @@ const User = require("../models/user-model");
 
 //Fonction de mappage 
 
-const userMapper=(user)=>new UserDTO(user.id,user.email,user.firstname,user.lastname,user.contry,user.phone);
+const userMapper=(user)=>new UserDTO(user.id,user.email,user.firstname,user.lastname,user.country,user.phone);
 
 const userController={
     getAll:async(req,res)=>{
@@ -34,9 +34,9 @@ const userController={
     update:async(req,res)=>{
         const id=req.params.id;
 
-        const {firstname,lastname,email,contry,phone}=req.body
+        const {firstname,lastname,email,country,phone}=req.body
         //la fonction qui permet de trouver l'élément via son id et de le modifier
-        const userUpdated=await User.findByIdAndUpdate(id,{firstname,lastname,email,phone,contry},{returnDocument:'after'});
+        const userUpdated=await User.findByIdAndUpdate(id,{firstname,lastname,email,phone,country},{returnDocument:'after'});
 
         if (!userUpdated) {
             return res.sendStatus(404) // <------ élément pas trouvée lors de la demande
