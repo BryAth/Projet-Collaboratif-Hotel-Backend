@@ -57,8 +57,9 @@ const chambreSchema = new Schema ({
 
     },
     chambrestatus:{
-        type:String,
-        required:true
+        type:Boolean,
+        default : true
+        
     },
     chambreReservation:[{
         dateDebut :{

@@ -9,10 +9,19 @@ chambreRouter.route('/')
 
 .get (chambreController.getAll)
 
+
+
 .post(chambreController.create)
 
 chambreRouter.route('/:id')
 
+.get(chambreController.getById)
+
+.put(chambreController.reservation)
+
+.put(chambreController.desactive)
+
+.delete(chambreController.delete)
 
 
     
