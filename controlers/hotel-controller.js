@@ -24,7 +24,7 @@ const hotelController = {
     },
     create: async(req,res)=>{
         const hotelToAdd = Hotel(req.body);
-        console.log(hotelToAdd);
+        
         await hotelToAdd.save();
         res.status(200).json(hotelToAdd);
     },

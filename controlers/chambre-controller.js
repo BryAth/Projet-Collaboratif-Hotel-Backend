@@ -25,7 +25,7 @@ const chambreController = {
     },
     create: async(req,res)=>{
         const chambreToAdd = Chambre(req.body);
-        console.log(chambreToAdd);
+
         await chambreToAdd.save();
         res.status(200).json(chambreToAdd);
     },

@@ -1,11 +1,10 @@
 const hotelRouter = require ('express').Router();
+const hotelController = require("../controlers/hotel-controller.js")
 
 const hotelValidator = require("../validateur/hotel-validator")
 
 hotelRouter.route('/')
-    .get((req,res) => {
-        res.status(200).send("Bienvenue sur la page d'hotels !")
-    })
+    .get(hotelController.getAll)
 
 
 
