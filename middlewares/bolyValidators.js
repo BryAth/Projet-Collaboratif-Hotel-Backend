@@ -20,8 +20,7 @@ const bodyValidation =  (yupValidator)  => {
         }
         
         catch(e) {
-            res.sendStatus(400);
-            console.log(e);
+            return  res.sendStatus(400) 
         }
 
     }

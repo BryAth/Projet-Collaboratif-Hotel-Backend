@@ -3,12 +3,38 @@ const Hotel = require('../models/hotel-model')
 
 const hotelController = {
     getAll : async(req,res)=>{
-        console.log(req.query)
+        
         const offset = req.query.offset ? req.query.offset : 0;
+
         const limit = req.query.offset ? req.query.offset : 10;
-        const hotels = await Hotel.find().limit(limit).skip(offset);
+
+
+        let countryFilter;
+
+        const country = req.query.country;
+
+        if (country) {
+
+            countryFilter = { 'adresse.pays' : country};
+
+        }
+
+        else {
+
+            countryFilter = {};
+
+        }
+
+     
+
+        const hotels = await Hotel.find(countryFilter).limit(limit).skip(offset);
+        
+
+        // const hotels = await Hotel.find().limit(limit).skip(offset);
+
         const count = await Hotel.countDocuments();
-        const data = {'hotels':hotels,'count':count}
+        const data = {'hotels':hotels,'count':count} 
+      
         res.status(200).json(data)
     },
     getById: async(req,res) =>{

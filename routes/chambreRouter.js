@@ -1,7 +1,7 @@
 
 const chambreRouter = require('express').Router();
 
-const authDroits = require ('../middlewares/identification-token-middlewares')
+// const identification = require ('../middlewares/identification-token-middlewares') //!
 
 const chambreController = require('../controlers/chambre-controller.js');
 
@@ -18,9 +18,8 @@ chambreRouter.route('/:id')
 
     .get(chambreController.getById)
 
-   
-
-    .put(authDroits("Admin"),chambreController.update)
+    // .put(identification("Admin"),chambreController.update)
+    .put(chambreController.update)
 
 
     .delete(chambreController.delete)

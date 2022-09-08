@@ -4,12 +4,29 @@ const Chambre = require('../models/chambre-model')
 
 const chambreController = {
     getAll : async(req,res)=>{
+
+
+        let hotelFilter;
+
+        const hotelF = req.query.hotel
+
+        if(hotelF){
+            hotelFilter = {'hotel' : hotelF}
+        }
+
+        else{
+            hotelFilter = {};
+        }
+
+
         console.log(req.query)
-        const offset = req.query.offset ? req.query.offset : 0;
-        const limit = req.query.offset ? req.query.offset : 10;
-        const chambres = await Chambre.find().limit(limit).skip(offset);
-        const count = await Chambre.countDocuments();
+        const offset = req.query.offset ? req.query.offset : 0
+        const limit = req.query.offset ? req.query.offset : 10
+        const chambres = await Chambre.find(hotelFilter).limit(limit).skip(offset)
+        const count = await Chambre.countDocuments()
+
         const data = {'chambres':chambres,'count':count}
+        
         res.status(200).json(data)
     },
     getById: async(req,res) =>{
@@ -31,7 +48,7 @@ const chambreController = {
     },
     update: async(req,res) =>{
         const id = req.params.id;
-        const{nom,descriptionCourte,descriptionLongue,hotel,type,nombreDePersonnes,prix,salleDeBain,nombreDeWc,options}=req.body;
+        const{nom,descriptionCourte,descriptionLongue,hotel,type,nombreDePersonnes,prix,salleDeBain,nombreDeWc,options,chambrestatus}=req.body;
         const chambre = await Chambre.findByIdAndUpdate(id,{
             nom,
             descriptionCourte,
@@ -42,7 +59,8 @@ const chambreController = {
             prix,
             salleDeBain,
             nombreDeWc,
-            options
+            options,
+            chambrestatus
 
 
         },{returnDocument:'after'});
@@ -55,8 +73,9 @@ const chambreController = {
     },
     desactive:async(req,res)=>{
         const id = req.params.id;
+        const {chambrestatus} = req.body
         const chambre = await Chambre.findByIdAndUpdate(id,{
-            chambrestatus
+            chambrestatus 
         },{returnDocument:'after'});
         if(chambre){
             res.status(200).json(chambre);

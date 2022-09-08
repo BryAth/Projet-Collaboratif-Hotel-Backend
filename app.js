@@ -4,6 +4,8 @@ require("dotenv-flow").config()
 
 const express =  require("express");
 
+const cors = require("cors")
+
 const {DB_CONNECTION,PORT} = process.env
 
 console.log("Lancé en"  , PORT)
@@ -15,6 +17,10 @@ require('express-async-errors')
 const mongoose = require('mongoose')
 
 const app = express();
+
+app.use(cors())
+
+
 const router = require("./routes");
 
 
@@ -31,6 +37,12 @@ app.use('/api',router)
 
 
 
-app.listen(8080,() => {
+app.listen(PORT,() => {
     console.log(`Server up sur le port  : ${PORT}`)
 })
+
+//! ADD cors
+//! ADD cors
+//! ADD cors
+//! ADD cors
+//! ADD cors 
