@@ -3,14 +3,19 @@ const User = require("../models/user-model");
 
 //Fonction de mappage 
 
-const userMapper=(user)=>new UserDTO(user.id,user.email,user.firstname,user.lastname,user.country,user.phone);
+const userMapper= user => new UserDTO(user.id,user.email,user.firstname,user.lastname,user.country,user.phone);
 
 const userController={
     getAll:async(req,res)=>{
+
         // récupéré les utilisateurs
         const users=await User.find();
+        res.status(200).json(users)
+
+
+        // const userDTO =users.map(userMapper)
         
-        res.status(200).json(users);
+        // res.status(200).json(userDTO);
     },
     getByID:async(req,res)=>{
         
@@ -23,14 +28,19 @@ const userController={
         }
 
         const userDTO=userMapper(user);
+        res.status(200).json(user)
 
-        res.status(200).json(user);
+        // res.status(200).json(userDTO);
     },
-    create : async(req,res) => {
-        const userToAdd = User(req.body)
-        await userToAdd.save()
-        res.status(200).json(userToAdd)
-    },
+    // create : async(req,res) => {
+    //     const userToAdd = User(req.body)
+    //     await userToAdd.save()
+    //     res.status(200).json(userToAdd)
+    // },
+
+
+
+    
     update:async(req,res)=>{
         const id=req.params.id;
 

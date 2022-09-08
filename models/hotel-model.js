@@ -24,7 +24,8 @@ const hotelSchema = new Schema ({
     email:{
         type : String , 
         required : true,
-        trim : true
+        trim : true,
+        unique : true
 
     },
     nombreChambres:{
@@ -45,6 +46,9 @@ const hotelSchema = new Schema ({
         type : Boolean,
         default:false,
 
+    },
+    image : {
+        type : String    
     }
 },{
     collection : 'Hotel',

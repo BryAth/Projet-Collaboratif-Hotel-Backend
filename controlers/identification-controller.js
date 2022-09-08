@@ -5,7 +5,7 @@ const tokenUtils=require('../token/token')
 const argon2=require('argon2');
 
 const identificationController={
-    login: async(req,res)=>{
+    login: async(req,res) => {
     //Pour se loger un identifiant et un mdp 
 
     const {credential,password}=req.body
@@ -26,22 +26,22 @@ const identificationController={
         if (!user) {
             return res.status(401).json({error:'non autorisée'}) //401 -> Unauthorized -> Pas les bonnes infos de login
         }
-        const verifierPassword=await argon2.verify(user.password,password);
+        const verifierPassword=await argon2.verify(user.password,password)
 
         if (!verifierPassword) {
-            res.status(200).json(user)
+            
             return res.status(401).json({error:'non autorisée'}) //401 -> Unauthorized -> Pas les bonnes infos de login
             
         }
 
-        //TODO : générer et renvoyer un token
+    
         const token=await tokenUtils.generate(user);
-        return res.json({token});
+        return res.status(200).json({token});
     },
-    register:async(req,res)=>{
-
+    register:async(req,res)=>{ 
+        
         const {pseudo,firstname, lastname,email,password,country,phone}=req.body;
-
+        console.log(req.body);
         const hashPasword=await argon2.hash(password);
         // un nouvel utilisateur à partir des infos sur req.body
 

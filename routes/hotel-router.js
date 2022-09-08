@@ -5,6 +5,9 @@ const hotelValidator = require("../validateur/hotel-validator")
 const bodyValidator = require ('../middlewares/bolyValidators')
 
 
+
+
+
 hotelRouter.route('/')
     .get(hotelController.getAll)
 
@@ -18,6 +21,7 @@ hotelRouter.route('/:id')
     .put( bodyValidator(hotelValidator), hotelController.update)
 
     .delete(hotelController.delete)
+
 
 
 

@@ -36,7 +36,7 @@ const userSchema=new Schema({
 
     },
     phone:{
-        type:Number,
+        type:String,
         required:true,
         trim:true
     },
@@ -51,6 +51,6 @@ const userSchema=new Schema({
     timestamps:true
 });
 //model User à partir du userSchema
-const User=model('User',userSchema);
+const User= model('User',userSchema);
 
 module.exports=User;
