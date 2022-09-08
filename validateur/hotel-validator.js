@@ -18,7 +18,8 @@ const hotelValidator = yup.object({
     nombreChambres: yup.number().required().positive(),
     piscine:yup.boolean(),
     voiturier:yup.boolean(),
-    roomService:yup.boolean()
+    roomService:yup.boolean(),
+    image:yup.string()
 
 });
 
